@@ -28,6 +28,7 @@ class btninformation extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 25),
             child: Column(
+              crossAxisAlignment:CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   text1,

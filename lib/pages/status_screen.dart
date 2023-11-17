@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iot_tata/pages/page_profile.dart';
+import 'package:iot_tata/pages/status_page/dust_screen.dart';
+import 'package:iot_tata/pages/status_page/humidity_screen.dart';
+import 'package:iot_tata/pages/status_page/methane_screen.dart';
+import 'package:iot_tata/pages/status_page/temperature_screen.dart';
 
 import '../components/btn_analytics.dart';
 import 'dashboard.dart';
@@ -14,6 +18,7 @@ class StatusScreen extends StatefulWidget {
 
 class _StatusScreenState extends State<StatusScreen> {
   int _currentIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +64,6 @@ class _StatusScreenState extends State<StatusScreen> {
               label: 'News',
             ),
           ],
-
         ),
         body: Column(
           children: <Widget>[
@@ -70,9 +74,7 @@ class _StatusScreenState extends State<StatusScreen> {
                 child: Row(
                   children: <Widget>[
                     IconButton(
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                       icon: Icon(Icons.menu),
                     ),
                     Spacer(),
@@ -88,7 +90,8 @@ class _StatusScreenState extends State<StatusScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => PageProfile()),
+                          MaterialPageRoute(
+                              builder: (context) => PageProfile()),
                         );
                       },
                       icon: Icon(Icons.person),
@@ -123,15 +126,70 @@ class _StatusScreenState extends State<StatusScreen> {
                 child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
-                      children: <Widget> [
-                        btnanalytics(text1: 'Temperature', text2: '27°C', iconData: Icons.device_thermostat, colorcont: Color(0xFFF6F5FB), colorfont: Color(0xFF403572), coloricon: Color(0xFF403572)),
-                        btnanalytics(text1: 'Humidity', text2: '60%', iconData: Icons.water_drop, colorcont: Color(0xFFFFF4F4), colorfont: Color(0xFFFF3726), coloricon: Color(0xFFFF3726)),
-                        btnanalytics(text1: 'Methane', text2: '22ppm', iconData: Icons.gas_meter, colorcont: Color(0xFFF5F9F9), colorfont: Color(0xFF479696), coloricon: Color(0xFF479696)),
-                        btnanalytics(text1: 'Dust', text2: '12mg/m³', iconData: Icons.factory, colorcont: Color(0xFFFDF9FB), colorfont: Color(0xFFC93F8D), coloricon: Color(0xFFC93F8D)),
-                        btnanalytics(text1: 'Sensor', text2: 'Active', iconData: Icons.sensors, colorcont: Color(0xFFF2FDEF), colorfont: Color(0xFF72B062), coloricon: Color(0xFF72B062)),
+                      children: <Widget>[
+                        btnanalytics(
+                          text1: 'Temperature',
+                          text2: '27°C',
+                          iconData: Icons.device_thermostat,
+                          colorcont: Color(0xFFF6F5FB),
+                          colorfont: Color(0xFF403572),
+                          coloricon: Color(0xFF403572),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TemperatureScreen()));
+                          },
+                        ),
+                        btnanalytics(
+                            text1: 'Humidity',
+                            text2: '60%',
+                            iconData: Icons.water_drop,
+                            colorcont: Color(0xFFFFF4F4),
+                            colorfont: Color(0xFFFF3726),
+                            coloricon: Color(0xFFFF3726),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HumidityScreen()));
+                          },
+                        ),
+                        btnanalytics(
+                            text1: 'Methane',
+                            text2: '22ppm',
+                            iconData: Icons.gas_meter,
+                            colorcont: Color(0xFFF5F9F9),
+                            colorfont: Color(0xFF479696),
+                            coloricon: Color(0xFF479696),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MethaneScreen()));
+                          },),
+                        btnanalytics(
+                            text1: 'Dust',
+                            text2: '12mg/m³',
+                            iconData: Icons.factory,
+                            colorcont: Color(0xFFFDF9FB),
+                            colorfont: Color(0xFFC93F8D),
+                            coloricon: Color(0xFFC93F8D),
+                          onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DustScreen()));
+                        },),
+                        btnanalytics(
+                            text1: 'Sensor',
+                            text2: 'Active',
+                            iconData: Icons.sensors,
+                            colorcont: Color(0xFFF2FDEF),
+                            colorfont: Color(0xFF72B062),
+                            coloricon: Color(0xFF72B062)),
                       ],
-                    )
-                ),
+                    )),
               ),
             ),
           ],

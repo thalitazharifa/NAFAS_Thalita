@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iot_tata/pages/page_profile.dart';
+import 'package:iot_tata/components/top_navbar.dart';
 import 'package:iot_tata/pages/status_screen.dart';
 
 import '../components/btn_information.dart';
@@ -64,38 +64,8 @@ class _DashboardState extends State<Dashboard> {
         body: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-              child: Container(
-                height: 40,
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-
-                      },
-                      icon: Icon(Icons.menu),
-                    ),
-                    Spacer(),
-                    Text(
-                      'Home',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF595085)),
-                    ),
-                    Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PageProfile()),
-                        );
-                      },
-                      icon: Icon(Icons.person),
-                    ),
-                  ],
-                ),
-              ),
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+                child: TopNavbar(text1: 'Home', icon1: Icons.menu),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -121,8 +91,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 190,top: 30),
+                          padding: const EdgeInsets.only(left: 190, top: 30),
                           child: Container(
                             child: Icon(Icons.filter_alt_outlined),
                           ),
@@ -139,7 +108,10 @@ class _DashboardState extends State<Dashboard> {
                               gradient: LinearGradient(
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
-                                colors: [Color(0xFF291C6D), Color(0xFFD994A7)], // Adjust the colors as needed
+                                colors: [
+                                  Color(0xFF291C6D),
+                                  Color(0xFFD994A7)
+                                ], // Adjust the colors as needed
                               ),
                               borderRadius: BorderRadius.circular(15)),
                           child: Row(
@@ -191,7 +163,10 @@ class _DashboardState extends State<Dashboard> {
                               gradient: LinearGradient(
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
-                                colors: [Color(0xFF291C6D), Color(0xFF7497EF)], // Adjust the colors as needed
+                                colors: [
+                                  Color(0xFF291C6D),
+                                  Color(0xFF7497EF)
+                                ], // Adjust the colors as needed
                               ),
                               borderRadius: BorderRadius.circular(15)),
                           child: Row(
@@ -255,10 +230,22 @@ class _DashboardState extends State<Dashboard> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: <Widget>[
-                                btnobservation(text1: 'Temperature', text2: '27°C', colorcont: Color(0xFFF6F5FB)),
-                                btnobservation(text1: 'Humidity', text2: '60%', colorcont: Color(0xFFFFF4F4)),
-                                btnobservation(text1: 'Methane', text2: '22ppm', colorcont: Color(0xFFF5F9F9)),
-                                btnobservation(text1: 'Dust', text2: '12mg', colorcont: Color(0xFFFDF9FB)),
+                                btnobservation(
+                                    text1: 'Temperature',
+                                    text2: '27°C',
+                                    colorcont: Color(0xFFF6F5FB)),
+                                btnobservation(
+                                    text1: 'Humidity',
+                                    text2: '60%',
+                                    colorcont: Color(0xFFFFF4F4)),
+                                btnobservation(
+                                    text1: 'Methane',
+                                    text2: '22ppm',
+                                    colorcont: Color(0xFFF5F9F9)),
+                                btnobservation(
+                                    text1: 'Dust',
+                                    text2: '12mg',
+                                    colorcont: Color(0xFFFDF9FB)),
                               ],
                             )),
                       ),
@@ -281,12 +268,36 @@ class _DashboardState extends State<Dashboard> {
                             scrollDirection: Axis.vertical,
                             child: Column(
                               children: <Widget>[
-                                btninformation(text1: 'Hot Temperature',text2:'Drink Water',iconData: Icons.hot_tub,colorcont: Color(0xFFF6F5FB)),
-                                btninformation(text1: 'Cold Temperature',text2:'Wear Jacket',iconData: Icons.severe_cold,colorcont: Color(0xFFFFF4F4)),
-                                btninformation(text1: 'Gas Leak',text2:'Leave the Area',iconData: Icons.oil_barrel,colorcont: Color(0xFFF5F9F9)),
-                                btninformation(text1: 'Hot Temperature',text2:'Drink Water',iconData: Icons.hot_tub,colorcont: Color(0xFFF6F5FB)),
-                                btninformation(text1: 'Cold Temperature',text2:'Wear Jacket',iconData: Icons.severe_cold,colorcont: Color(0xFFFFF4F4)),
-                                btninformation(text1: 'Gas Leak',text2:'Leave the Area',iconData: Icons.oil_barrel,colorcont: Color(0xFFF5F9F9)),
+                                btninformation(
+                                    text1: 'Hot Temperature',
+                                    text2: 'Drink Water',
+                                    iconData: Icons.hot_tub,
+                                    colorcont: Color(0xFFF6F5FB)),
+                                btninformation(
+                                    text1: 'Cold Temperature',
+                                    text2: 'Wear Jacket',
+                                    iconData: Icons.severe_cold,
+                                    colorcont: Color(0xFFFFF4F4)),
+                                btninformation(
+                                    text1: 'Gas Leak',
+                                    text2: 'Leave the Area',
+                                    iconData: Icons.oil_barrel,
+                                    colorcont: Color(0xFFF5F9F9)),
+                                btninformation(
+                                    text1: 'Hot Temperature',
+                                    text2: 'Drink Water',
+                                    iconData: Icons.hot_tub,
+                                    colorcont: Color(0xFFF6F5FB)),
+                                btninformation(
+                                    text1: 'Cold Temperature',
+                                    text2: 'Wear Jacket',
+                                    iconData: Icons.severe_cold,
+                                    colorcont: Color(0xFFFFF4F4)),
+                                btninformation(
+                                    text1: 'Gas Leak',
+                                    text2: 'Leave the Area',
+                                    iconData: Icons.oil_barrel,
+                                    colorcont: Color(0xFFF5F9F9)),
                               ],
                             )),
                       ),

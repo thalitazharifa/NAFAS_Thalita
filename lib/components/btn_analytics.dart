@@ -5,7 +5,17 @@ class btnanalytics extends StatelessWidget {
   final String text2;
   final IconData iconData;
   final Color colorfont, colorcont, coloricon;
-  const btnanalytics({super.key, required this.text1, required this.text2, required this.iconData, required this.colorcont, required this.colorfont, required this.coloricon});
+  final VoidCallback? onPressed;
+
+  const btnanalytics(
+      {super.key,
+      required this.text1,
+      required this.text2,
+      required this.iconData,
+      required this.colorcont,
+      required this.colorfont,
+      required this.coloricon,
+      this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +24,7 @@ class btnanalytics extends StatelessWidget {
       width: 350,
       margin: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-          color: colorcont,
-          borderRadius: BorderRadius.circular(15)),
+          color: colorcont, borderRadius: BorderRadius.circular(15)),
       child: Row(
         children: <Widget>[
           Padding(
@@ -52,8 +61,9 @@ class btnanalytics extends StatelessWidget {
           Spacer(),
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Icon(
-              Icons.more_vert,
+            child: IconButton(
+              onPressed: onPressed,
+              icon: Icon(Icons.more_vert),
               color: coloricon,
             ),
           ),
@@ -62,4 +72,3 @@ class btnanalytics extends StatelessWidget {
     );
   }
 }
-

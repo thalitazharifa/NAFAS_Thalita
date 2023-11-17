@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_tata/pages/activity_filter/activity_filter_1.dart';
 import 'package:iot_tata/pages/status_screen.dart';
 
 import 'dashboard.dart';
@@ -94,15 +95,26 @@ class _NewsPageState extends State<NewsPage> {
                           color: Color(0xFF595085),
                         ),
                       ),
-                      Icon(Icons.keyboard_arrow_down),
+                      Icon(
+                        Icons.keyboard_arrow_down
+                      ),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 190,top: 30),
+                      left: 180,top: 30),
                   child: Container(
-                    child: Icon(Icons.filter_alt_outlined),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ActivityFilter1()),
+                        );
+                      },
+                      icon: Icon(Icons.filter_alt_outlined),
+                    ),
                   ),
                 ),
               ],
