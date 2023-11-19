@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iot_tata/pages/login_screen.dart';
+import 'package:iot_tata/pages/page_profile/configure_alert.dart';
 import 'package:iot_tata/pages/page_profile/device_manager.dart';
 
 class PageProfile extends StatelessWidget {
@@ -84,36 +86,46 @@ class PageProfile extends StatelessWidget {
                   mainAxisSpacing: 10.0,
                   crossAxisSpacing: 10.0,
                   children: <Widget> [
-                    Container(
-                      width: 150.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFF6F5FB),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 15, left: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget> [
-                            Icon(Icons.settings_outlined, size: 30,color: Color(0xFF3D3270),),
-                            SizedBox(height: 10,),
-                            Text("Configure \nAlert",
-                              style: TextStyle(
-                                color: Color(0xFF3D3270),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ConfigureAlert()),
+                        );
+                      },
+                      child: Container(
+                        width: 150.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF6F5FB),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget> [
+                              Icon(Icons.settings_outlined, size: 30,color: Color(0xFF3D3270),),
+                              SizedBox(height: 10,),
+                              Text("Configure \nAlert",
+                                style: TextStyle(
+                                  color: Color(0xFF3D3270),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 10,),
-                            Text('Set specific thresholds or limits for triggering \nalerts',
-                            style: TextStyle(
-                              color: Color(0xFF403572),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                            ),
-                            ),
-                          ],
+                              SizedBox(height: 10,),
+                              Text('Set specific thresholds or limits for triggering \nalerts',
+                              style: TextStyle(
+                                color: Color(0xFF403572),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                              ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -160,36 +172,67 @@ class PageProfile extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 150.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFFF4F4),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 15, left: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget> [
-                            Icon(Icons.logout, size: 30,color: Color(0xFFFF5648),),
-                            SizedBox(height: 10,),
-                            Text("Logout \nNow",
-                              style: TextStyle(
-                                color: Color(0xFFFF5648),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                    InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Are you sure you want to logout?'),
+                                content: Text('You will be logged out of the app'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                                      );
+                                    },
+                                    child: Text('Yes'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('No'),
+                                  ),
+                                ],
+                              );
+                            },
+                        );
+                      },
+                      child: Container(
+                        width: 150.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFF4F4),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget> [
+                              Icon(Icons.logout, size: 30,color: Color(0xFFFF5648),),
+                              SizedBox(height: 10,),
+                              Text("Logout \nNow",
+                                style: TextStyle(
+                                  color: Color(0xFFFF5648),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 10,),
-                            Text('Swiftly log out from their \ncurrent session',
-                              style: TextStyle(
-                                color: Color(0xFFA27A7A),
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
+                              SizedBox(height: 10,),
+                              Text('Swiftly log out from their \ncurrent session',
+                                style: TextStyle(
+                                  color: Color(0xFFA27A7A),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
