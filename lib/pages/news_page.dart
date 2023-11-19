@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:iot_tata/components/btn_info_sctivity.dart';
+import 'package:iot_tata/components/top_navbar.dart';
 import 'package:iot_tata/pages/activity_filter/activity_filter_1.dart';
+import 'package:iot_tata/pages/activity_log_details/activity_log_detail_3.dart';
 import 'package:iot_tata/pages/status_screen.dart';
 
+import 'activity_log_details/activity_log_detail_1.dart';
 import 'dashboard.dart';
 
 class NewsPage extends StatefulWidget {
@@ -10,8 +14,10 @@ class NewsPage extends StatefulWidget {
   @override
   _NewsPageState createState() => _NewsPageState();
 }
+
 class _NewsPageState extends State<NewsPage> {
   int _currentIndex = 2;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,32 +65,18 @@ class _NewsPageState extends State<NewsPage> {
           ],
         ),
         body: Column(
-          children: <Widget> [
+          children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.arrow_back),
-                  Spacer(),
-                  Text(
-                    'Activity Log',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF595085)),
-                  ),
-                  Spacer(),
-                  Icon(
-                    (Icons.person),
-                  ),
-                ],
+              child: TopNavbar(
+                text1: 'Activity Log',
+                icon1: Icons.menu,
               ),
             ),
             Row(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 30),
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                   child: Row(
                     children: <Widget>[
                       Text(
@@ -95,15 +87,12 @@ class _NewsPageState extends State<NewsPage> {
                           color: Color(0xFF595085),
                         ),
                       ),
-                      Icon(
-                        Icons.keyboard_arrow_down
-                      ),
+                      Icon(Icons.keyboard_arrow_down),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      left: 180,top: 30),
+                  padding: const EdgeInsets.only(left: 180, top: 30),
                   child: Container(
                     child: IconButton(
                       onPressed: () {
@@ -122,108 +111,30 @@ class _NewsPageState extends State<NewsPage> {
             SizedBox(height: 20),
             Column(
               children: <Widget>[
-                Container(
-                  height: 70,
-                  width: 350,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Color(0xFF291C6D), Color(0xFFD994A7)], // Adjust the colors as needed
-                      ),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                        const EdgeInsets.only(left: 25, right: 15),
-                        child: Icon(
-                          Icons.gas_meter_outlined,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 18),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '24/10/23 - IOT-Device-1',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFFAFCEED),
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            Text(
-                              'Gas Leak Detected',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.more_vert,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
+                BtnInfoSctivity(
+                  text1: '24/10/23 - IOT-Device-1',
+                  text2: 'Sensor went online',
+                  icon1: Icons.sensors,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ActivityLogDetail1()),
+                    );
+                  },
                 ),
                 SizedBox(height: 10),
-                Container(
-                  height: 70,
-                  width: 350,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Color(0xFF291C6D), Color(0xFF7497EF)], // Adjust the colors as needed
-                      ),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                        const EdgeInsets.only(left: 25, right: 15),
-                        child: Icon(
-                          Icons.online_prediction,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 18),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '24/10/23 - IOT-Device-1',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFFAFCEED),
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                            Text(
-                              'Sensor went online',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.more_vert,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
+                BtnInfoSctivity(
+                  text1: '24/10/23 - IOT-Device-1',
+                  text2: 'Gas leak detected',
+                  icon1: Icons.gas_meter_outlined,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ActivityLogDetail3()),
+                    );
+                  },
                 ),
               ],
             ),

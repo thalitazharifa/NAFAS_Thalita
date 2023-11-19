@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_tata/pages/page_profile/device_manager.dart';
 
 class PageProfile extends StatelessWidget {
   const PageProfile({Key? key}) : super(key: key);
@@ -116,36 +117,46 @@ class PageProfile extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 150.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFF5F9F9),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 15, left: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget> [
-                            Icon(Icons.sensors, size: 30,color: Color(0xFF479696),),
-                            SizedBox(height: 10,),
-                            Text("Device \nManager",
-                              style: TextStyle(
-                                color: Color(0xFF479696),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DeviceManager()),
+                        );
+                      },
+                      child: Container(
+                        width: 150.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF5F9F9),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget> [
+                              Icon(Icons.sensors, size: 30,color: Color(0xFF479696),),
+                              SizedBox(height: 10,),
+                              Text("Device \nManager",
+                                style: TextStyle(
+                                  color: Color(0xFF479696),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 10,),
-                            Text('Monitor the status of \ntheir connected devices',
-                              style: TextStyle(
-                                color: Color(0xFF8DAEAE),
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
+                              SizedBox(height: 10,),
+                              Text('Monitor the status of \ntheir connected devices',
+                                style: TextStyle(
+                                  color: Color(0xFF8DAEAE),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

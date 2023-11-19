@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:iot_tata/components/btn_info_sctivity.dart';
 import 'package:iot_tata/components/top_navbar.dart';
+import 'package:iot_tata/pages/activity_filter/activity_filter_1.dart';
+import 'package:iot_tata/pages/activity_log_details/activity_log_detail_1.dart';
+import 'package:iot_tata/pages/status_page/dust_screen.dart';
+import 'package:iot_tata/pages/status_page/humidity_screen.dart';
+import 'package:iot_tata/pages/status_page/methane_screen.dart';
+import 'package:iot_tata/pages/status_page/temperature_screen.dart';
 import 'package:iot_tata/pages/status_screen.dart';
 
 import '../components/btn_information.dart';
 import '../components/btn_observation.dart';
+import 'activity_log_details/activity_log_detail_3.dart';
 import 'news_page.dart';
 
 class Dashboard extends StatefulWidget {
@@ -64,8 +72,8 @@ class _DashboardState extends State<Dashboard> {
         body: Column(
           children: <Widget>[
             Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-                child: TopNavbar(text1: 'Home', icon1: Icons.menu),
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+              child: TopNavbar(text1: 'Home', icon1: Icons.menu),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -75,7 +83,7 @@ class _DashboardState extends State<Dashboard> {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 30),
+                              left: 30, right: 20, top: 30),
                           child: Row(
                             children: <Widget>[
                               Text(
@@ -91,9 +99,18 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 190, top: 30),
+                          padding: const EdgeInsets.only(left: 160, top: 30),
                           child: Container(
-                            child: Icon(Icons.filter_alt_outlined),
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ActivityFilter1()),
+                                );
+                              },
+                              icon: Icon(Icons.filter_alt_outlined),
+                            ),
                           ),
                         ),
                       ],
@@ -101,114 +118,30 @@ class _DashboardState extends State<Dashboard> {
                     SizedBox(height: 20),
                     Column(
                       children: <Widget>[
-                        Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Color(0xFF291C6D),
-                                  Color(0xFFD994A7)
-                                ], // Adjust the colors as needed
-                              ),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 25, right: 15),
-                                child: Icon(
-                                  Icons.gas_meter_outlined,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 18),
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      '24/10/23 - IOT-Device-1',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Color(0xFFAFCEED),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Gas Leak Detected',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.more_vert,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                        BtnInfoSctivity(
+                          text1: '24/10/23 - IOT-Device-1',
+                          text2: 'Sensor went online',
+                          icon1: Icons.sensors,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ActivityLogDetail1()),
+                            );
+                          },
                         ),
                         SizedBox(height: 10),
-                        Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Color(0xFF291C6D),
-                                  Color(0xFF7497EF)
-                                ], // Adjust the colors as needed
-                              ),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 25, right: 15),
-                                child: Icon(
-                                  Icons.online_prediction,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 18),
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      '24/10/23 - IOT-Device-1',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Color(0xFFAFCEED),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Sensor went online',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.more_vert,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                        BtnInfoSctivity(
+                          text1: '24/10/23 - IOT-Device-1',
+                          text2: 'Gas leak detected',
+                          icon1: Icons.gas_meter_outlined,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ActivityLogDetail3()),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -231,21 +164,56 @@ class _DashboardState extends State<Dashboard> {
                             child: Row(
                               children: <Widget>[
                                 btnobservation(
-                                    text1: 'Temperature',
-                                    text2: '27°C',
-                                    colorcont: Color(0xFFF6F5FB)),
+                                  text1: 'Temperature',
+                                  text2: '27°C',
+                                  colorcont: Color(0xFFF6F5FB),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              TemperatureScreen()),
+                                    );
+                                  },
+                                ),
                                 btnobservation(
-                                    text1: 'Humidity',
-                                    text2: '60%',
-                                    colorcont: Color(0xFFFFF4F4)),
+                                  text1: 'Humidity',
+                                  text2: '60%',
+                                  colorcont: Color(0xFFFFF4F4),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HumidityScreen()),
+                                    );
+                                  },
+                                ),
                                 btnobservation(
-                                    text1: 'Methane',
-                                    text2: '22ppm',
-                                    colorcont: Color(0xFFF5F9F9)),
+                                  text1: 'Methane',
+                                  text2: '22ppm',
+                                  colorcont: Color(0xFFF5F9F9),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MethaneScreen()),
+                                    );
+                                  },
+                                ),
                                 btnobservation(
-                                    text1: 'Dust',
-                                    text2: '12mg',
-                                    colorcont: Color(0xFFFDF9FB)),
+                                  text1: 'Dust',
+                                  text2: '12mg',
+                                  colorcont: Color(0xFFFDF9FB),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DustScreen()),
+                                    );
+                                  },
+                                ),
                               ],
                             )),
                       ),

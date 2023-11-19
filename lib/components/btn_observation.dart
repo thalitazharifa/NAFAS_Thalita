@@ -4,7 +4,14 @@ class btnobservation extends StatelessWidget {
   final String text1;
   final String text2;
   final Color colorcont;
-  const btnobservation({super.key, required this.text1, required this.text2, required this.colorcont});
+  final VoidCallback onPressed;
+
+  const btnobservation(
+      {super.key,
+      required this.text1,
+      required this.text2,
+      required this.colorcont,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +21,8 @@ class btnobservation extends StatelessWidget {
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: colorcont,
+        borderRadius: BorderRadius.circular(15),
+        color: colorcont,
       ),
       child: Column(
         children: <Widget>[
@@ -28,9 +35,13 @@ class btnobservation extends StatelessWidget {
                   color: Color(0xFF61598B),
                 ),
               ),
-              Icon(Icons.more_vert,
-                  size: 16,
-                  color: Color(0xFF61598B)),
+              InkWell(
+                onTap: onPressed,
+                child: Icon(
+                    Icons.more_vert,
+                    size: 16,
+                  ),
+              ),
             ],
           ),
           Padding(
