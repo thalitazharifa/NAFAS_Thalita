@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:iot_tata/pages/page_profile.dart';
+import 'package:iot_tata/components/btn_info_sctivity.dart';
+import 'package:iot_tata/components/top_navbar.dart';
+import 'package:iot_tata/pages/activity_filter/activity_filter_1.dart';
+import 'package:iot_tata/pages/activity_log_details/activity_log_detail_1.dart';
+import 'package:iot_tata/pages/page_profile/device_manager.dart';
+import 'package:iot_tata/pages/status_page/dust_screen.dart';
+import 'package:iot_tata/pages/status_page/humidity_screen.dart';
+import 'package:iot_tata/pages/status_page/methane_screen.dart';
+import 'package:iot_tata/pages/status_page/temperature_screen.dart';
 import 'package:iot_tata/pages/status_screen.dart';
 
 import '../components/btn_information.dart';
 import '../components/btn_observation.dart';
+import 'activity_filter/activity_filter_2.dart';
+import 'activity_log_details/activity_log_detail_2.dart';
+import 'activity_log_details/activity_log_detail_3.dart';
 import 'news_page.dart';
 
 class Dashboard extends StatefulWidget {
@@ -65,175 +76,84 @@ class _DashboardState extends State<Dashboard> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-              child: Container(
-                height: 40,
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-
-                      },
-                      icon: Icon(Icons.menu),
-                    ),
-                    Spacer(),
-                    Text(
-                      'Home',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF595085)),
-                    ),
-                    Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PageProfile()),
-                        );
-                      },
-                      icon: Icon(Icons.person),
-                    ),
-                  ],
-                ),
-              ),
+              child: TopNavbar(text1: 'Home', icon1: Icons.menu),
             ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 30),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                'IOT-Device-1',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color(0xFF595085),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DeviceManager()),
+                        );
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 30, right: 20, top: 30),
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  'IOT-Device-1',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Color(0xFF595085),
+                                  ),
                                 ),
+                                Icon(Icons.keyboard_arrow_right_rounded),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 160, top: 30),
+                            child: Container(
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ActivityFilter1()),
+                                  );
+                                },
+                                icon: Icon(Icons.filter_alt_outlined),
                               ),
-                              Icon(Icons.keyboard_arrow_down),
-                            ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 190,top: 30),
-                          child: Container(
-                            child: Icon(Icons.filter_alt_outlined),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(height: 20),
                     Column(
                       children: <Widget>[
-                        Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [Color(0xFF291C6D), Color(0xFFD994A7)], // Adjust the colors as needed
-                              ),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 25, right: 15),
-                                child: Icon(
-                                  Icons.gas_meter_outlined,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 18),
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      '24/10/23 - IOT-Device-1',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Color(0xFFAFCEED),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Gas Leak Detected',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.more_vert,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                        BtnInfoSctivity(
+                          text1: '24/10/23 - IOT-Device-1',
+                          text2: 'Sensor went online',
+                          icon1: Icons.sensors,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ActivityLogDetail2()),
+                            );
+                          },
                         ),
                         SizedBox(height: 10),
-                        Container(
-                          height: 70,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [Color(0xFF291C6D), Color(0xFF7497EF)], // Adjust the colors as needed
-                              ),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 25, right: 15),
-                                child: Icon(
-                                  Icons.online_prediction,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 18),
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      '24/10/23 - IOT-Device-1',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Color(0xFFAFCEED),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Sensor went online',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.more_vert,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                        BtnInfoSctivity(
+                          text1: '24/10/23 - IOT-Device-1',
+                          text2: 'Gas leak detected',
+                          icon1: Icons.gas_meter_outlined,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ActivityLogDetail3()),
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -255,10 +175,57 @@ class _DashboardState extends State<Dashboard> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: <Widget>[
-                                btnobservation(text1: 'Temperature', text2: '27°C', colorcont: Color(0xFFF6F5FB)),
-                                btnobservation(text1: 'Humidity', text2: '60%', colorcont: Color(0xFFFFF4F4)),
-                                btnobservation(text1: 'Methane', text2: '22ppm', colorcont: Color(0xFFF5F9F9)),
-                                btnobservation(text1: 'Dust', text2: '12mg', colorcont: Color(0xFFFDF9FB)),
+                                btnobservation(
+                                  text1: 'Temperature',
+                                  text2: '27°C',
+                                  colorcont: Color(0xFFF6F5FB),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              TemperatureScreen()),
+                                    );
+                                  },
+                                ),
+                                btnobservation(
+                                  text1: 'Humidity',
+                                  text2: '60%',
+                                  colorcont: Color(0xFFFFF4F4),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HumidityScreen()),
+                                    );
+                                  },
+                                ),
+                                btnobservation(
+                                  text1: 'Methane',
+                                  text2: '22ppm',
+                                  colorcont: Color(0xFFF5F9F9),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MethaneScreen()),
+                                    );
+                                  },
+                                ),
+                                btnobservation(
+                                  text1: 'Dust',
+                                  text2: '12mg',
+                                  colorcont: Color(0xFFFDF9FB),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DustScreen()),
+                                    );
+                                  },
+                                ),
                               ],
                             )),
                       ),
@@ -281,12 +248,36 @@ class _DashboardState extends State<Dashboard> {
                             scrollDirection: Axis.vertical,
                             child: Column(
                               children: <Widget>[
-                                btninformation(text1: 'Hot Temperature',text2:'Drink Water',iconData: Icons.hot_tub,colorcont: Color(0xFFF6F5FB)),
-                                btninformation(text1: 'Cold Temperature',text2:'Wear Jacket',iconData: Icons.severe_cold,colorcont: Color(0xFFFFF4F4)),
-                                btninformation(text1: 'Gas Leak',text2:'Leave the Area',iconData: Icons.oil_barrel,colorcont: Color(0xFFF5F9F9)),
-                                btninformation(text1: 'Hot Temperature',text2:'Drink Water',iconData: Icons.hot_tub,colorcont: Color(0xFFF6F5FB)),
-                                btninformation(text1: 'Cold Temperature',text2:'Wear Jacket',iconData: Icons.severe_cold,colorcont: Color(0xFFFFF4F4)),
-                                btninformation(text1: 'Gas Leak',text2:'Leave the Area',iconData: Icons.oil_barrel,colorcont: Color(0xFFF5F9F9)),
+                                btninformation(
+                                    text1: 'Hot Temperature',
+                                    text2: 'Drink Water',
+                                    iconData: Icons.hot_tub,
+                                    colorcont: Color(0xFFF6F5FB)),
+                                btninformation(
+                                    text1: 'Cold Temperature',
+                                    text2: 'Wear Jacket',
+                                    iconData: Icons.severe_cold,
+                                    colorcont: Color(0xFFFFF4F4)),
+                                btninformation(
+                                    text1: 'Gas Leak',
+                                    text2: 'Leave the Area',
+                                    iconData: Icons.oil_barrel,
+                                    colorcont: Color(0xFFF5F9F9)),
+                                btninformation(
+                                    text1: 'Hot Temperature',
+                                    text2: 'Drink Water',
+                                    iconData: Icons.hot_tub,
+                                    colorcont: Color(0xFFF6F5FB)),
+                                btninformation(
+                                    text1: 'Cold Temperature',
+                                    text2: 'Wear Jacket',
+                                    iconData: Icons.severe_cold,
+                                    colorcont: Color(0xFFFFF4F4)),
+                                btninformation(
+                                    text1: 'Gas Leak',
+                                    text2: 'Leave the Area',
+                                    iconData: Icons.oil_barrel,
+                                    colorcont: Color(0xFFF5F9F9)),
                               ],
                             )),
                       ),
