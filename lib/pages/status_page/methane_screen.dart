@@ -126,7 +126,7 @@ class _MethaneScreenState extends State<MethaneScreen> {
                   crossAxisSpacing: 10.0,
                   children: <Widget>[
                     BtnSettings(
-                      text1: 'Average \nTemperature',
+                      text1: 'Average \nMethane',
                       text2: '27°C',
                       icon1: Icons.av_timer,
                       sizefont1: 24,
@@ -136,7 +136,7 @@ class _MethaneScreenState extends State<MethaneScreen> {
                       heightcon: 100.0,
                     ),
                     BtnSettings(
-                      text1: 'Highest \nTemperature',
+                      text1: 'Highest \nMethane',
                       text2: '30°C',
                       icon1: Icons.hdr_strong,
                       sizefont1: 24,
@@ -146,7 +146,7 @@ class _MethaneScreenState extends State<MethaneScreen> {
                       heightcon: 100,
                     ),
                     BtnSettings(
-                      text1: 'Lowest \nTemperature',
+                      text1: 'Lowest \nMethane',
                       text2: '25°C',
                       icon1: Icons.hdr_strong,
                       sizefont1: 24,

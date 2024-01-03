@@ -45,7 +45,7 @@ class _ActivityLogDetail2State extends State<ActivityLogDetail2> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 40),
                   child: Text(
-                    'System is Online',
+                    'System is Offline',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,

@@ -3,6 +3,7 @@ import 'package:iot_tata/components/btn_info_sctivity.dart';
 import 'package:iot_tata/components/top_navbar.dart';
 import 'package:iot_tata/pages/activity_filter/activity_filter_1.dart';
 import 'package:iot_tata/pages/activity_log_details/activity_log_detail_1.dart';
+import 'package:iot_tata/pages/page_profile/device_manager.dart';
 import 'package:iot_tata/pages/status_page/dust_screen.dart';
 import 'package:iot_tata/pages/status_page/humidity_screen.dart';
 import 'package:iot_tata/pages/status_page/methane_screen.dart';
@@ -11,6 +12,8 @@ import 'package:iot_tata/pages/status_screen.dart';
 
 import '../components/btn_information.dart';
 import '../components/btn_observation.dart';
+import 'activity_filter/activity_filter_2.dart';
+import 'activity_log_details/activity_log_detail_2.dart';
 import 'activity_log_details/activity_log_detail_3.dart';
 import 'news_page.dart';
 
@@ -79,41 +82,50 @@ class _DashboardState extends State<Dashboard> {
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 30, right: 20, top: 30),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                'IOT-Device-1',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color(0xFF595085),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DeviceManager()),
+                        );
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 30, right: 20, top: 30),
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  'IOT-Device-1',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Color(0xFF595085),
+                                  ),
                                 ),
-                              ),
-                              Icon(Icons.keyboard_arrow_down),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 160, top: 30),
-                          child: Container(
-                            child: IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ActivityFilter1()),
-                                );
-                              },
-                              icon: Icon(Icons.filter_alt_outlined),
+                                Icon(Icons.keyboard_arrow_right_rounded),
+                              ],
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 160, top: 30),
+                            child: Container(
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ActivityFilter1()),
+                                  );
+                                },
+                                icon: Icon(Icons.filter_alt_outlined),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 20),
                     Column(
@@ -126,7 +138,7 @@ class _DashboardState extends State<Dashboard> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ActivityLogDetail1()),
+                                  builder: (context) => ActivityLogDetail2()),
                             );
                           },
                         ),
